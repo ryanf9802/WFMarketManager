@@ -1,60 +1,32 @@
-import requests
-import json
+import pywmapi as wm
 import logging
+import util
+from ref.ref import updateRefs, syndicate_items
 
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('output.log'),
-        logging.StreamHandler()
+        logging.FileHandler('output.log', mode='w'),
     ]
 )
 
-with open("token.json") as f:
-    token = json.load(f)
+logger = logging.getLogger(__name__)
 
-market = requests.Session()
-market.headers.update({
-    "content-type": "application/json",
-    "accept": "application/json",
-    "platform": "pc",
-    "language": "en"
-})
+session = wm.auth.signin('ryanf9802@gmail.com', 'Coppernotice0101')
 
-market.base_url = "https://api.warframe.market/v1"
-
-# Create a client instance for authorized requests
-nkn1396 = requests.Session()
-nkn1396.headers.update({
-    "content-type": "application/json",
-    "accept": "application/json",
-    "platform": "pc",
-    "language": "en",
-    "authorization": f"JWT {token}"
-})
-nkn1396.base_url = "https://api.warframe.market/v1"
-
-def post_order(item_id: str, platinum: int, quantity: int, rank: int, visible: bool=True):
-    order_data = {
-        "order_type": "sell",
-        "item_id": item_id,
-        "platinum": platinum,
-        "quantity": quantity,
-        "visible": visible,
-        "rank": rank
-    }
-    try:
-        response = nkn1396.post(f"{nkn1396.base_url}/profile/orders", json=order_data)
-        response.raise_for_status()
-        print("SUCCESS!")
-        print(response.json())
-    except requests.exceptions.RequestException as e:
-        print(f"Error: {e}")
+standing = {
+    "steel_meridian": 0,
+    "cephalon_suda": 0,
+    "perrin_sequence": 0,
+    "red_veil": 0,
+    "new_loka": 0,
+    "arbiters_of_hexis": 0,
+}
 
 def main():
-    post_order()
+    updateRefs()
+    print(util.get_sell_orders(session))
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-

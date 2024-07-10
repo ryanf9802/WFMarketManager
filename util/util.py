@@ -13,6 +13,9 @@ item_url_to_id = {x:y for y, x in zip(item_id_to_url.keys(), item_id_to_url.valu
 
 logger = logging.getLogger(__name__)
 
+def calculate_sell_price(session, item_url: str):
+    return 10000 # temporary placeholder
+
 def place_sell_order(session, *, item_url: str, platinum: int, quantity: int, rank: int=0, visible=True):
     new_item = wm.orders.OrderNewItem(
         item_id=item_name_to_id[item_url_to_name[item_url]],

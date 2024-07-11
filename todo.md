@@ -1,0 +1,2 @@
+- WFM api has a max of 3 calls per second, implement WFMQueue to handle processing and cap at 3 calls per sec
+- WFM free accounts have a max of 100 orders- let's take either the most common sold or highest plat value items to list

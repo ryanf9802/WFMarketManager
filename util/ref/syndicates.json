@@ -1,310 +1,304 @@
 {
-  "steel_meridian": [
-    {
-      "url_name": "vaykor_sydon",
-      "required_standing": 0
-    }
-  ],
-  "arbiters_of_hexis": [
-    {
-      "url_name": "telos_boltace",
-      "required_standing": 0
-    }
-  ],
-  "cephalon_suda": [
-    {
-      "url_name": "synoid_simulor",
-      "required_standing": 0
-    }
-  ],
-  "perrin_sequence": [
-    {
-      "url_name": "secura_dual_cestra",
-      "required_standing": 0
-    }
-  ],
-  "red_veil": [
-    {
-      "url_name": "rakta_dark_dagger",
-      "required_standing": 0
-    }
-  ],
-  "new_loka": [
-    {
-      "url_name": "onorix_blade",
-      "required_standing": 20000
-    },
-    {
-      "url_name": "phaedra_stock",
-      "required_standing": 20000
-    },
-    {
-      "url_name": "rathbone_head",
-      "required_standing": 20000
-    },
-    {
-      "url_name": "agkuza_blade",
-      "required_standing": 20000
-    },
-    {
-      "url_name": "centaur_handle",
-      "required_standing": 20000
-    },
-    {
-      "url_name": "winds_of_purity",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "disarming_purity",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "bright_purity",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "lasting_purity",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "elusive_retribution",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "endless_lullaby",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "reactive_storm",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "duality",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "calm_and_frenzy",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "peaceful_provocation",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "energy_transfer",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "shattered_storm",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "mending_splinters",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "spectrosiphon",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "rousing_plunder",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "pilfering_swarm",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "wrath_of_ukko",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "swift_bite",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "valence_formation",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "greedy_pull",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "magnetized_discharge",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "counter_pulse",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "fracturing_crush",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "mind_freak",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "pacifying_bolts",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "chaos_sphere",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "assimilate",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "smite_infusion",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "hallowed_eruption",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "phoenix_renewal",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "hallowed_reckoning",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "partitioned_mallet",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "conductor",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "spellbound_harvest",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "beguiling_lantern",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "razorwing_blitz",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "ironclad_flight",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "axios_javelineers",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "intrepid_stand",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "pool_of_life",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "vampire_leech",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "abating_link",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "champions_blessing",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "swing_line",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "eternal_war",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "prolonged_paralysis",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "hysterical_assault",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "enraged",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "fused_resevoir",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "critical_surge",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "target_fixation",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "airburst_rounds",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "jet_stream",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "funnel_clouds",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "anchored_glide",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "celestial_stomp",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "enveloping_cloud",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "primal_rage",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "merulina_guardian",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "loyal_merulina",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "surging_blades",
-      "required_standing": 25000
-    },
-    {
-      "url_name": "sancti_castanas",
-      "required_standing": 100000
-    },
-    {
-      "url_name": "sancti_tigris",
-      "required_standing": 125000
-    },
-    {
-      "url_name": "sancti_magistar",
-      "required_standing": 125000
-    }
-  ]
+  "steel_meridian": {
+    "items": [],
+    "mods": []
+  },
+  "arbiters_of_hexis": {
+    "items": [],
+    "mods": []
+  },
+  "cephalon_suda": {
+    "items": [],
+    "mods": []
+  },
+  "perrin_sequence": {
+    "items": [],
+    "mods": []
+  },
+  "red_veil": {
+    "items": [],
+    "mods": []
+  },
+  "new_loka": {
+    "items": [
+      {
+        "url_name": "onorix_blade",
+        "required_standing": 20000
+      },
+      {
+        "url_name": "phaedra_stock",
+        "required_standing": 20000
+      },
+      {
+        "url_name": "rathbone_head",
+        "required_standing": 20000
+      },
+      {
+        "url_name": "agkuza_blade",
+        "required_standing": 20000
+      },
+      {
+        "url_name": "centaur_handle",
+        "required_standing": 20000
+      },
+      {
+        "url_name": "sancti_castanas",
+        "required_standing": 100000
+      },
+      {
+        "url_name": "sancti_tigris",
+        "required_standing": 125000
+      },
+      {
+        "url_name": "sancti_magistar",
+        "required_standing": 125000
+      }
+    ],
+    "mods": [
+      {
+        "url_name": "winds_of_purity",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "disarming_purity",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "bright_purity",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "lasting_purity",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "elusive_retribution",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "endless_lullaby",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "reactive_storm",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "duality",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "calm_and_frenzy",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "peaceful_provocation",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "energy_transfer",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "shattered_storm",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "mending_splinters",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "spectrosiphon",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "rousing_plunder",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "pilfering_swarm",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "wrath_of_ukko",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "swift_bite",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "valence_formation",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "greedy_pull",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "magnetized_discharge",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "counter_pulse",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "fracturing_crush",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "mind_freak",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "pacifying_bolts",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "chaos_sphere",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "assimilate",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "smite_infusion",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "hallowed_eruption",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "phoenix_renewal",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "hallowed_reckoning",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "partitioned_mallet",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "conductor",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "spellbound_harvest",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "beguiling_lantern",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "razorwing_blitz",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "ironclad_flight",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "axios_javelineers",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "intrepid_stand",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "pool_of_life",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "vampire_leech",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "abating_link",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "champions_blessing",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "swing_line",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "eternal_war",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "prolonged_paralysis",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "hysterical_assault",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "enraged",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "fused_reservoir",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "critical_surge",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "target_fixation",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "airburst_rounds",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "jet_stream",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "funnel_clouds",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "anchored_glide",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "celestial_stomp",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "enveloping_cloud",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "primal_rage",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "merulina_guardian",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "loyal_merulina",
+        "required_standing": 25000
+      },
+      {
+        "url_name": "surging_blades",
+        "required_standing": 25000
+      }
+    ]
+  }
 }

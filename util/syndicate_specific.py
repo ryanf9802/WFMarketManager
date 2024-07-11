@@ -11,17 +11,15 @@ standings = json.load(open(SYNDICATE_STANDINGS_FILE_PATH))
 logger.info('Loaded user syndicate standings')
 
 syndicates = json.load(open("util/ref/syndicates.json"))
-# get number of syndicate items
-num_syndicate_items = 0
-for syndicate in syndicates:
-    num_syndicate_items += len(syndicates[syndicate])
-logger.info(f'Loaded syndicate items')
 
 syndicate_item_ids = []
 for syndicate in syndicates:
-    for index, item in enumerate(syndicates[syndicate]):
+    for item in syndicates[syndicate]['items']:
         syndicate_item_ids.append(util.item_url_to_id[item["url_name"]])
-logger.info(f'Generated list of {len(syndicate_item_ids)} syndicate item IDs')
+    for mod in syndicates[syndicate]['mods']:
+        syndicate_item_ids.append(util.item_url_to_id[mod["url_name"]])
+syndicate_item_ids = list(set(syndicate_item_ids))
+logger.info(f'Generated list of {len(syndicate_item_ids)} syndicate item/mod IDs')
 
 def refresh_syndicate_orders(session, ask_to_confirm_removal=True):
     logger.info('Refreshing syndicate orders')
@@ -35,7 +33,7 @@ def add_syndicate_orders(session):
     logger.info(f'User valid syndicates: {valid_syndicate_standings}')
     created_orders = []
     for syndicate in valid_syndicate_standings.keys():
-        for itemobj in syndicates[syndicate]:
+        for itemobj in syndicates[syndicate]['items']:
             if itemobj['required_standing'] == 0:
                 logger.debug(f'Skipping {itemobj["url_name"]} due to no standing requirement')
                 continue
@@ -46,6 +44,19 @@ def add_syndicate_orders(session):
                 created_orders.append(util.place_sell_order(session, 
                                       item_url=url_name, 
                                       platinum=platinum, 
+                                      quantity=quantity))
+        for modobj in syndicates[syndicate]['mods']:
+            if modobj['required_standing'] == 0:
+                logger.debug(f'Skipping {modobj["url_name"]} due to no standing requirement')
+                continue
+            if modobj['required_standing'] < standings[syndicate]:
+                url_name = modobj['url_name']
+                platinum = util.calculate_sell_price(session, url_name)
+                quantity = standings[syndicate] // modobj['required_standing']
+                created_orders.append(util.place_sell_order(session, 
+                                      item_url=url_name, 
+                                      platinum=platinum, 
+                                      rank=0,
                                       quantity=quantity))
     logger.info(f'Added {len(created_orders)} orders')
     logger.debug(f'Order IDs: {[order.id for order in created_orders]}')

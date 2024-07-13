@@ -2,6 +2,8 @@ import pywmapi as wm
 import logging
 import util.syndicate_specific as syn
 from util.WFMQueue import WFMQueue
+import asyncio
+import util.util as util
 
 # Clear log file
 open('output.log', 'w').close()
@@ -16,11 +18,13 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def main():
+async def main():
     session = wm.auth.signin('ryanf9802@gmail.com', 'Coppernotice0101')
-    wq = WFMQueue()
+    wq = WFMQueue(session)
     wq.start()
-    syn.refresh_syndicate_orders(session, ask_to_confirm_removal=False)
+
+    syn.refresh_syndicate_orders(ask_to_confirm=False)
+
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

@@ -3,7 +3,10 @@ import logging
 import util.syndicate_specific as syn
 from util.WFMQueue import WFMQueue
 import asyncio
-import util.util as util
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Clear log file
 open('output.log', 'w').close()
@@ -19,11 +22,11 @@ logger = logging.getLogger(__name__)
 
 
 async def main():
-    session = wm.auth.signin('ryanf9802@gmail.com', 'Coppernotice0101')
+    session = wm.auth.signin(os.environ.get("USERNAME"), os.environ.get("PASSWORD"))
     wq = WFMQueue(session)
-    wq.start()
+    asyncio.run(wq.start())
 
-    syn.refresh_syndicate_orders(ask_to_confirm=False)
+    syn.refresh_syndicate_orders(ask_to_confirm=True)
 
 
 if __name__ == "__main__":

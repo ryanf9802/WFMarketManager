@@ -4,8 +4,6 @@ import json
 from util.WFMQueue import WFMQueue
 from util.models.Items import DeleteOrderID
 
-
-
 item_name_to_id = {item["item_name"].lower(): item["id"] for item in json.load(open("util/ref/all_items.json"))["payload"]["items"]}
 item_id_to_name = {x:y for y, x in zip(item_name_to_id.keys(), item_name_to_id.values())}
 

@@ -37,6 +37,8 @@ async def main():
     syn.remove_syndicate_orders(ask_to_confirm=False)
     syn.add_syndicate_orders()
 
+    await wq.stop()
+
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -116,12 +116,5 @@ class WFMQueue:
             except asyncio.CancelledError:
                 pass
 
-        if self.queue_display_task:
-            self.queue_display_task.cancel()
-            try:
-                await self.queue_display_task
-            except asyncio.CancelledError:
-                pass
-
         loop = asyncio.get_event_loop()
         loop.stop()

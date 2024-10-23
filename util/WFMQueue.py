@@ -13,6 +13,10 @@ class WFMQueue:
     _instance = None
 
     @staticmethod
+    def active_instance() -> bool:
+        return WFMQueue._instance is not None
+
+    @staticmethod
     def get_instance():
         if WFMQueue._instance is None:
             logger.debug("Returning new WFMQueue instance")
@@ -101,7 +105,7 @@ class WFMQueue:
         return len(self.queue)
 
     async def start(self):
-        logger.debug("Starting WFMQueue")
+        logger.info("Starting WFMQueue")
         self.running = True
         self.worker_task = asyncio.create_task(self.worker())
 

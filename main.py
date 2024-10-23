@@ -35,7 +35,7 @@ async def main():
     await wq.start()
 
     syn.remove_syndicate_orders(ask_to_confirm=False)
-    #syn.add_syndicate_orders()
+    syn.add_syndicate_orders()
 
 
 if __name__ == "__main__":

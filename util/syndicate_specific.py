@@ -21,7 +21,6 @@ for syndicate in syndicates:
 syndicate_item_ids = list(set(syndicate_item_ids))
 logger.info(f"Generated list of {len(syndicate_item_ids)} syndicate item/mod IDs")
 
-
 def refresh_syndicate_orders(ask_to_confirm=True):
     logger.info("Refreshing syndicate orders")
     remove_syndicate_orders(ask_to_confirm=ask_to_confirm)
@@ -47,10 +46,13 @@ def add_syndicate_orders():
             if itemobj["required_standing"] < standings[syndicate]:
                 url_name = itemobj["url_name"]
                 platinum = util.calculate_sell_price(url_name)
-                quantity = standings[syndicate] // itemobj["required_standing"]
-                util.place_sell_order(
-                    item_url=url_name, platinum=platinum, quantity=quantity
-                )
+                if determine_worth_sell(platinum, itemobj["required_standing"]):
+                    quantity = standings[syndicate] // itemobj["required_standing"]
+                    util.place_sell_order(
+                        item_url=url_name, platinum=platinum, quantity=quantity
+                    )
+                else:
+                    logger.info(f"Skipping {url_name} due to low sell value")
         for modobj in syndicates[syndicate]["mods"]:
             if modobj["required_standing"] == 0:
                 logger.debug(
@@ -60,10 +62,19 @@ def add_syndicate_orders():
             if modobj["required_standing"] < standings[syndicate]:
                 url_name = modobj["url_name"]
                 platinum = util.calculate_sell_price(url_name)
-                quantity = standings[syndicate] // modobj["required_standing"]
-                util.place_sell_order(
-                    item_url=url_name, platinum=platinum, rank=0, quantity=quantity
-                )
+                if determine_worth_sell(platinum, modobj["required_standing"]):
+                    quantity = standings[syndicate] // modobj["required_standing"]
+                    util.place_sell_order(
+                        item_url=url_name, platinum=platinum, rank=0, quantity=quantity
+                    )
+                else:
+                    logger.info(f"Skipping {url_name} due to low sell value")
+
+def determine_worth_sell(sellprice: int, standing: int):
+    # Modify this value for the filter (higher number = more forgiveness)
+    if standing // sellprice > 2700:
+        return False
+    return True
 
 
 def remove_syndicate_orders(*, ask_to_confirm=True):

@@ -30,7 +30,17 @@ logger = logging.getLogger(__name__)
 
 
 def calculate_sell_price(item_url: str):
-    return 10000  # temporary placeholder
+    logger.debug(f'Calculating sell price for {item_url}')
+    orders = [
+        x
+        for x in wm.orders.get_orders(item_url)
+        if x.order_type == wm.common.OrderType.sell
+        and (x.user.status.value == "online" or x.user.status.value == "ingame")
+    ]
+    orders.sort(key=lambda x: x.platinum)
+    sell_price = orders[0].platinum - 1
+    logger.info(f"Calculated sell price for {item_url} as {sell_price}")
+    return sell_price
 
 
 def place_sell_order(

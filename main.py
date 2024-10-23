@@ -2,6 +2,7 @@ import pywmapi as wm
 import logging
 import util.syndicate_specific as syn
 from util.WFMQueue import WFMQueue
+from util.StatusModel import StatusModel
 import asyncio
 from dotenv import load_dotenv
 import os
@@ -9,24 +10,32 @@ import os
 load_dotenv()
 
 # Clear log file
-open('output.log', 'w').close()
+open("output.log", "w").close()
 
 logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler('output.log',),
-    ]
+        logging.FileHandler(
+            "output.log",
+        ),
+    ],
 )
 logger = logging.getLogger(__name__)
 
 
 async def main():
-    session = wm.auth.signin(os.environ.get("USERNAME"), os.environ.get("PASSWORD"))
-    wq = WFMQueue(session)
-    asyncio.run(wq.start())
+    username = os.environ.get("USERNAME")
+    password = os.environ.get("PASSWORD")
 
-    syn.refresh_syndicate_orders(ask_to_confirm=True)
+    logger.info(f"Starting session as user {username}")
+    session = wm.auth.signin(username, password)
+
+    wq = WFMQueue(session)
+    await wq.start()
+
+    syn.remove_syndicate_orders(ask_to_confirm=False)
+    #syn.add_syndicate_orders()
 
 
 if __name__ == "__main__":

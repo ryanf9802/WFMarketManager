@@ -8,76 +8,85 @@ SYNDICATE_STANDINGS_FILE_PATH = "syndicate_standings.json"
 logger = logging.getLogger(__name__)
 
 standings = json.load(open(SYNDICATE_STANDINGS_FILE_PATH))
-logger.info('Loaded user syndicate standings')
+logger.info("Loaded user syndicate standings")
 
 syndicates = json.load(open("util/ref/syndicates.json"))
 
 syndicate_item_ids = []
 for syndicate in syndicates:
-    for item in syndicates[syndicate]['items']:
+    for item in syndicates[syndicate]["items"]:
         syndicate_item_ids.append(util.item_url_to_id[item["url_name"]])
-    for mod in syndicates[syndicate]['mods']:
+    for mod in syndicates[syndicate]["mods"]:
         syndicate_item_ids.append(util.item_url_to_id[mod["url_name"]])
 syndicate_item_ids = list(set(syndicate_item_ids))
-logger.info(f'Generated list of {len(syndicate_item_ids)} syndicate item/mod IDs')
+logger.info(f"Generated list of {len(syndicate_item_ids)} syndicate item/mod IDs")
+
 
 def refresh_syndicate_orders(ask_to_confirm=True):
-    logger.info('Refreshing syndicate orders')
+    logger.info("Refreshing syndicate orders")
     remove_syndicate_orders(ask_to_confirm=ask_to_confirm)
     add_syndicate_orders()
-    logger.info('Finished refreshing syndicate orders')
+    logger.info("Finished refreshing syndicate orders")
+
 
 def add_syndicate_orders():
-    logger.info('Adding available syndicate orders')
-    valid_syndicate_standings = {syndicate:standings[syndicate] for syndicate in standings if standings[syndicate] > 20000}
-    logger.info(f'User valid syndicates: {valid_syndicate_standings}')
+    logger.info("Adding available syndicate orders")
+    valid_syndicate_standings = {
+        syndicate: standings[syndicate]
+        for syndicate in standings
+        if standings[syndicate] > 20000
+    }
+    logger.info(f"User valid syndicates: {valid_syndicate_standings}")
     for syndicate in valid_syndicate_standings.keys():
-        for itemobj in syndicates[syndicate]['items']:
-            if itemobj['required_standing'] == 0:
-                logger.debug(f'Skipping {itemobj["url_name"]} due to no standing requirement')
+        for itemobj in syndicates[syndicate]["items"]:
+            if itemobj["required_standing"] == 0:
+                logger.debug(
+                    f'Skipping {itemobj["url_name"]} due to no standing requirement'
+                )
                 continue
-            if itemobj['required_standing'] < standings[syndicate]:
-                url_name = itemobj['url_name']
+            if itemobj["required_standing"] < standings[syndicate]:
+                url_name = itemobj["url_name"]
                 platinum = util.calculate_sell_price(url_name)
-                quantity = standings[syndicate] // itemobj['required_standing']
-                util.place_sell_order( 
-                                      item_url=url_name, 
-                                      platinum=platinum, 
-                                      quantity=quantity)
-        for modobj in syndicates[syndicate]['mods']:
-            if modobj['required_standing'] == 0:
-                logger.debug(f'Skipping {modobj["url_name"]} due to no standing requirement')
+                quantity = standings[syndicate] // itemobj["required_standing"]
+                util.place_sell_order(
+                    item_url=url_name, platinum=platinum, quantity=quantity
+                )
+        for modobj in syndicates[syndicate]["mods"]:
+            if modobj["required_standing"] == 0:
+                logger.debug(
+                    f'Skipping {modobj["url_name"]} due to no standing requirement'
+                )
                 continue
-            if modobj['required_standing'] < standings[syndicate]:
-                url_name = modobj['url_name']
+            if modobj["required_standing"] < standings[syndicate]:
+                url_name = modobj["url_name"]
                 platinum = util.calculate_sell_price(url_name)
-                quantity = standings[syndicate] // modobj['required_standing']
-                util.place_sell_order( 
-                                      item_url=url_name, 
-                                      platinum=platinum, 
-                                      rank=0,
-                                      quantity=quantity)
+                quantity = standings[syndicate] // modobj["required_standing"]
+                util.place_sell_order(
+                    item_url=url_name, platinum=platinum, rank=0, quantity=quantity
+                )
+
 
 def remove_syndicate_orders(*, ask_to_confirm=True):
-    logger.info('Removing syndicate orders')
+    logger.info("Removing syndicate orders")
     sell_orders = util.get_sell_orders()
     order_ids_to_remove = []
     for order in sell_orders:
         if order.item.id in syndicate_item_ids:
             order_ids_to_remove.append(order.id)
-    logger.info(f'Found {len(order_ids_to_remove)} sell orders to remove')
-    logger.debug(f'Order IDs to remove: {order_ids_to_remove}')
+    logger.info(f"Found {len(order_ids_to_remove)} sell orders to remove")
+    logger.debug(f"Order IDs to remove: {order_ids_to_remove}")
     if ask_to_confirm:
-        choice = input(f'Preparing to remove {len(order_ids_to_remove)} sell orders. Continue? (y/n): ')
+        choice = input(
+            f"Preparing to remove {len(order_ids_to_remove)} sell orders. Continue? (y/n): "
+        )
         while True:
             match choice:
-                case 'y' | 'Y':
+                case "y" | "Y":
                     break
-                case 'n' | 'N':
+                case "n" | "N":
                     return
                 case _:
                     choice = input('Invalid input. Please enter "y" or "n": ')
+    logger.info(f"Initiating deletion of {len(order_ids_to_remove)} sell orders")
     for order_id in order_ids_to_remove:
-        logger.info(f'Deleting order {order_id}')
         util.delete_order(order_id)
-    logger.info(f'Successfully deleted {len(order_ids_to_remove)} orders')

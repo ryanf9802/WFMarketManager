@@ -24,6 +24,10 @@ class WFMQueue:
     @staticmethod
     def size():
         return WFMQueue.get_instance().get_queue_size()
+    
+    @staticmethod
+    def queue_is_empty() -> bool:
+        return WFMQueue.size() == 0
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
@@ -96,10 +100,7 @@ class WFMQueue:
         logger.debug(f"Adding item to queue: {item}")
         self.queue.append(item)
         logger.debug(f"Queue size after adding: {self.size()}")
-
-    def size(self):
-        return len(self.queue)
-
+        
     async def start(self):
         logger.debug("Starting WFMQueue")
         self.running = True
@@ -113,13 +114,6 @@ class WFMQueue:
             self.worker_task.cancel()
             try:
                 await self.worker_task
-            except asyncio.CancelledError:
-                pass
-
-        if self.queue_display_task:
-            self.queue_display_task.cancel()
-            try:
-                await self.queue_display_task
             except asyncio.CancelledError:
                 pass
 

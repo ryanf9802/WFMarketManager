@@ -2,10 +2,11 @@ import pywmapi as wm
 import logging
 import util.syndicate_specific as syn
 from util.WFMQueue import WFMQueue
-from util.StatusModel import StatusModel
 import asyncio
 from dotenv import load_dotenv
 import os
+import sys
+from util.util import get_sell_orders
 
 load_dotenv()
 
@@ -25,6 +26,8 @@ logger = logging.getLogger(__name__)
 
 
 async def main():
+    os.system('cls')
+
     username = os.environ.get("USERNAME")
     password = os.environ.get("PASSWORD")
 
@@ -34,9 +37,24 @@ async def main():
     wq = WFMQueue(session)
     await wq.start()
 
-    syn.remove_syndicate_orders(ask_to_confirm=False)
-    syn.add_syndicate_orders()
-
+    while True:
+        print(f"{len(get_sell_orders())} Sell Orders\n")
+        userin = input("[0] Remove Current Syndicate Orders\n[1] Add Syndicate Orders\n[2] Quit\n")
+        match userin:
+            case "0":
+                syn.remove_syndicate_orders(ask_to_confirm=False)
+            case "1":
+                syn.add_syndicate_orders()
+            case "2":
+                await wq.stop()
+                os.system('cls')
+                sys.exit(0)
+            case _:
+                print("Invalid Input")
+                input("Enter to continue")
+        while not WFMQueue.queue_is_empty():
+            await asyncio.sleep(1)
+        os.system('cls')
 
 if __name__ == "__main__":
     asyncio.run(main())

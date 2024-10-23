@@ -65,7 +65,6 @@ def delete_order(order_id):
     wq = WFMQueue.get_instance()
     wq.add(DeleteOrderID(order_id))
 
-
 def get_sell_orders():
     wq = WFMQueue.get_instance()
     session = wq.session

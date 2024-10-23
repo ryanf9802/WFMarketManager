@@ -39,13 +39,16 @@ async def main():
 
     while True:
         print(f"{len(get_sell_orders())} Sell Orders\n")
-        userin = input("[0] Remove Current Syndicate Orders\n[1] Add Syndicate Orders\n[2] Quit\n")
+        userin = input("[0] Remove Current Syndicate Orders\n[1] Add Syndicate Orders\n[2] Refresh Orders\n[3] Quit\n")
         match userin:
             case "0":
                 syn.remove_syndicate_orders(ask_to_confirm=False)
             case "1":
                 syn.add_syndicate_orders()
             case "2":
+                syn.remove_syndicate_orders(ask_to_confirm=False)
+                syn.add_syndicate_orders()
+            case "3":
                 await wq.stop()
                 os.system('cls')
                 sys.exit(0)

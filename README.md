@@ -1,5 +1,5 @@
 Need .env file for auth as follows {
-  USERNAME=
+  EMAIL=
   PASSWORD=
 }
 

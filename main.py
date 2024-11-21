@@ -28,8 +28,10 @@ logger = logging.getLogger(__name__)
 async def main():
     os.system('cls')
 
-    username = os.environ.get("USERNAME")
+    username = os.environ.get("EMAIL")
     password = os.environ.get("PASSWORD")
+
+    print(f"{username} {password}")
 
     logger.info(f"Starting session as user {username}")
     session = wm.auth.signin(username, password)

@@ -56,6 +56,7 @@ class WFMQueue:
             await asyncio.sleep(1)
 
     async def process_item(self, item):
+
         logger.debug(
             f"Processing item: {item} with {len(self.queue)} items remaining in queue"
         )

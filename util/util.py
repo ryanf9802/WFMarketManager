@@ -4,6 +4,13 @@ import json
 from util.WFMQueue import WFMQueue
 from util.models.Items import DeleteOrderID
 
+item_url_to_volume = {
+    item["url_name"]: sum(
+        [x.volume for x in wm.statistics.get_statistic(item["url_name"]).closed_48h]
+    )
+    for item in json.load(open("util/ref/all_items.json"))["payload"]["items"]
+}
+
 item_name_to_id = {
     item["item_name"].lower(): item["id"]
     for item in json.load(open("util/ref/all_items.json"))["payload"]["items"]
@@ -30,7 +37,7 @@ logger = logging.getLogger(__name__)
 
 
 def calculate_sell_price(item_url: str):
-    logger.debug(f'Calculating sell price for {item_url}')
+    logger.debug(f"Calculating sell price for {item_url}")
     orders = [
         x
         for x in wm.orders.get_orders(item_url)
@@ -64,6 +71,7 @@ def place_sell_order(
 def delete_order(order_id):
     wq = WFMQueue.get_instance()
     wq.add(DeleteOrderID(order_id))
+
 
 def get_sell_orders():
     wq = WFMQueue.get_instance()
